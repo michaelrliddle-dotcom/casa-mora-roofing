@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa Mora Roofing | Santa Barbara & Los Angeles Roofing Contractor</title>
+  <meta name="description" content="Southern California's most trusted roofing contractor. Full roof replacements for residential and commercial properties. Licensed, insured, and California-based for 30 years.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =============================================
+       DESIGN TOKENS
+    ============================================= */
+    :root {
+      --c-bg:           #0f0f0f;
+      --c-bg-alt:       #171717;
+      --c-bg-3:         #1f1f1f;
+      --c-dark:         #0f0f0f;
+      --c-dark-2:       #080808;
+      --c-accent:       #8a8a8a;
+      --c-orange:       #C74B1F;
+      --c-orange-hover: #A83D17;
+      --c-accent-glow:  rgba(199, 75, 31, 0.28);
+      --c-ink:          #f0ede8;
+      --c-ink-soft:     #888480;
+      --c-ink-mid:      #555250;
+      --c-border:       #2a2a2a;
+
+      --f-display: 'Bebas Neue', sans-serif;
+      --f-body:    'Outfit', sans-serif;
+
+      --r-sm:  6px;
+      --r-md:  12px;
+      --r-lg:  20px;
+      --r-xl:  28px;
+
+      --shadow-card:  0 2px 20px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.04);
+      --shadow-hover: 0 12px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06);
+
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --dur: 0.65s;
+    }
+
+    /* =============================================
+       RESET & BASE
+    ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--f-body);
+      background: var(--c-bg);
+      color: var(--c-ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a   { text-decoration: none; color: inherit; }
+
+    /* =============================================
+       TYPOGRAPHY UTILITIES
+    ============================================= */
+    .eyebrow {
+      font-family: var(--f-body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--c-orange);
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .display {
+      font-family: var(--f-display);
+      line-height: 0.93;
+      letter-spacing: 0.025em;
+      color: var(--c-ink);
+    }
+
+    .display--lg  { font-size: clamp(2.8rem, 5.5vw, 4.4rem); }
+    .display--xl  { font-size: clamp(3.8rem, 8vw, 7.5rem); }
+
+    /* =============================================
+       LAYOUT
+    ============================================= */
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* =============================================
+       BUTTONS
+    ============================================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 26px;
+      border-radius: var(--r-sm);
+      font-family: var(--f-body);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s var(--ease);
+      white-space: nowrap;
+    }
+    .btn:active { transform: scale(0.97); }
+
+    .btn--primary {
+      background: var(--c-ink);
+      color: #0f0f0f;
+    }
+    .btn--primary:hover {
+      background: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .btn--ghost {
+      background: transparent;
+      color: rgba(255,255,255,0.82);
+      border: 1.5px solid rgba(255,255,255,0.22);
+    }
+    .btn--ghost:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.45);
+      color: #fff;
+    }
+
+    /* =============================================
+       SCROLL REVEAL
+    ============================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.08s; }
+    .d2 { transition-delay: 0.18s; }
+    .d3 { transition-delay: 0.28s; }
+    .d4 { transition-delay: 0.38s; }
+
+    /* =============================================
+       HEADER
+    ============================================= */
+    .header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 200;
+      transition: background 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .header.solid {
+      background: rgba(10, 10, 10, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.05);
+    }
+
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 28px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo__name {
+      font-family: var(--f-body);
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--c-ink);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav__links a {
+      color: rgba(255,255,255,0.65);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+    .nav__links a:hover { color: var(--c-orange); }
+
+    .btn--call {
+      background: var(--c-ink);
+      color: #0f0f0f;
+      padding: 10px 20px;
+      border-radius: var(--r-sm);
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.25s var(--ease);
+    }
+    .btn--call:hover {
+      background: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: translateX(-6px); }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      z-index: 199;
+      background: var(--c-dark-2);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 20px 28px 28px;
+      flex-direction: column;
+      gap: 0;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      color: rgba(255,255,255,0.78);
+      font-size: 16px;
+      font-weight: 500;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: color 0.2s ease;
+    }
+    .mobile-nav a:hover { color: #fff; }
+    .mobile-nav .btn--primary {
+      margin-top: 16px;
+      justify-content: center;
+      width: 100%;
+    }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    .hero {
+      min-height: 100dvh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: var(--c-dark);
+      overflow: hidden;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.pexels.com/photos/33404248/pexels-photo-33404248.jpeg?auto=compress&cs=tinysrgb&w=1920');
+      background-size: cover;
+      background-position: center 35%;
+    }
+
+    .hero__bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(8,8,8,0.45) 0%, rgba(8,8,8,0.72) 55%, rgba(8,8,8,0.97) 100%),
+        linear-gradient(to right,  rgba(8,8,8,0.65) 0%, rgba(8,8,8,0.1) 65%);
+    }
+
+    /* subtle noise grain */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 140px 28px 100px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero__pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(199,75,31,0.14);
+      border: 1px solid rgba(199,75,31,0.38);
+      color: rgba(240,237,232,0.85);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+    }
+
+    .hero__pill::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--c-orange);
+      border-radius: 50%;
+      animation: pulse 2s ease infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.75); }
+    }
+
+    .hero__title {
+      font-family: var(--f-display);
+      font-size: clamp(4rem, 10vw, 8.5rem);
+      line-height: 0.9;
+      letter-spacing: 0.03em;
+      color: #fff;
+      margin-bottom: 28px;
+      max-width: 820px;
+    }
+
+    .hero__title em {
+      font-style: normal;
+      color: var(--c-orange);
+    }
+
+    .hero__sub {
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      color: rgba(255,255,255,0.58);
+      max-width: 500px;
+      margin-bottom: 44px;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+
+    .hero__actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero__stats {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      margin-top: 88px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.09);
+      flex-wrap: wrap;
+    }
+
+    .hero__stat-val {
+      font-family: var(--f-display);
+      font-size: 2.6rem;
+      color: #fff;
+      line-height: 1;
+      letter-spacing: 0.04em;
+    }
+    .hero__stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.38);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+    }
+
+    /* =============================================
+       SERVICES
+    ============================================= */
+    .services {
+      padding: 110px 0;
+      background: var(--c-bg);
+    }
+
+    .services__head { max-width: 540px; margin-bottom: 56px; }
+
+    .services__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .svc-card {
+      background: var(--c-bg-alt);
+      border-radius: var(--r-xl);
+      padding: 48px 44px;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    }
+
+    .svc-card::after {
+      content: '';
+      position: absolute;
+      inset: 0 0 auto;
+      height: 3px;
+      background: var(--c-orange);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s var(--ease);
+    }
+
+    .svc-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+    .svc-card:hover::after { transform: scaleX(1); }
+
+    .svc-card__bg-num {
+      position: absolute;
+      right: -16px;
+      bottom: -20px;
+      font-family: var(--f-display);
+      font-size: 11rem;
+      line-height: 1;
+      color: rgba(255,255,255,0.04);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .svc-icon {
+      width: 54px;
+      height: 54px;
+      background: rgba(138,138,138,0.1);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .svc-icon svg { width: 26px; height: 26px; stroke: var(--c-accent); }
+
+    .svc-card__title {
+      font-family: var(--f-display);
+      font-size: 2rem;
+      letter-spacing: 0.04em;
+      color: var(--c-ink);
+      margin-bottom: 14px;
+    }
+
+    .svc-card__desc {
+      font-size: 15px;
+      color: var(--c-ink-soft);
+      line-height: 1.75;
+      max-width: 420px;
+    }
+
+    .svc-card__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 28px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--c-orange);
+      transition: gap 0.2s ease;
+    }
+    .svc-card__cta:hover { gap: 10px; }
+
+    /* =============================================
+       WHY US
+    ============================================= */
+    .why {
+      padding: 110px 0;
+      background: var(--c-bg-alt);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why::before {
+      content: '';
+      position: absolute;
+      top: -300px;
+      right: -250px;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(199,75,31,0.07) 0%, transparent 68%);
+      pointer-events: none;
+    }
+
+    .why .eyebrow { color: #f5a880; }
+    .why .display { color: var(--c-ink); }
+
+    .why__head { max-width: 560px; margin-bottom: 60px; }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+    }
+
+    .trust-card {
+      background: rgba(23,23,23,0.9);
+      padding: 40px 30px;
+      transition: background 0.3s ease;
+    }
+    .trust-card:hover { background: rgba(255,255,255,0.04); }
+
+    .trust-icon {
+      width: 46px;
+      height: 46px;
+      background: rgba(138,138,138,0.1);
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .trust-icon svg { width: 22px; height: 22px; stroke: var(--c-accent); }
+
+    .trust-card__title {
+      font-family: var(--f-display);
+      font-size: 1.35rem;
+      letter-spacing: 0.05em;
+      color: var(--c-ink);
+      margin-bottom: 10px;
+    }
+
+    .trust-card__desc {
+      font-size: 13.5px;
+      color: var(--c-ink-soft);
+      line-height: 1.65;
+    }
+
+    /* =============================================
+       BEFORE & AFTER
+    ============================================= */
+    .projects {
+      padding: 110px 0;
+      background: var(--c-bg);
+    }
+
+    .projects__head { max-width: 540px; margin-bottom: 14px; }
+
+    .projects__sub {
+      color: var(--c-ink-soft);
+      font-size: 15px;
+      margin-bottom: 56px;
+    }
+
+    .projects__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    /* Slider wrapper */
+    .ba-wrap {
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: box-shadow 0.35s var(--ease);
+    }
+    .ba-wrap:hover { box-shadow: var(--shadow-hover); }
+
+    .ba-slider {
+      position: relative;
+      overflow: hidden;
+      cursor: col-resize;
+      user-select: none;
+      touch-action: pan-y;
+      border-radius: var(--r-lg);
+    }
+
+    .ba-img-before {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(0.38) sepia(0.18) brightness(0.72) contrast(0.88) saturate(0.6);
+    }
+
+    .ba-after-clip {
+      position: absolute;
+      inset: 0;
+      width: 50%;
+      overflow: hidden;
+    }
+
+    .ba-img-after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%; /* overridden by JS */
+      object-fit: cover;
+      filter: brightness(1.04) contrast(1.03) saturate(1.12);
+    }
+
+    .ba-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: rgba(255,255,255,0.9);
+      transform: translateX(-50%);
+      pointer-events: none;
+      transition: left 0s;
+    }
+
+    .ba-handle-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 46px;
+      height: 46px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      pointer-events: none;
+    }
+
+    .ba-tag {
+      position: absolute;
+      top: 14px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border-radius: 4px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .ba-tag--before { right: 12px; background: rgba(0,0,0,0.52); color: #fff; }
+    .ba-tag--after  { left: 12px;  background: var(--c-orange);   color: #fff; }
+
+    .ba-info { padding: 18px 4px 0; }
+    .ba-info__title {
+      font-family: var(--f-display);
+      font-size: 1.2rem;
+      letter-spacing: 0.05em;
+      color: var(--c-ink);
+      margin-bottom: 3px;
+    }
+    .ba-info__location {
+      font-size: 13px;
+      color: var(--c-ink-soft);
+    }
+
+    /* =============================================
+       TESTIMONIALS
+    ============================================= */
+    .testimonials {
+      padding: 110px 0;
+      background: var(--c-bg-alt);
+    }
+
+    .testimonials__head { max-width: 480px; margin-bottom: 56px; }
+
+    .testimonials__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .tcard {
+      background: var(--c-bg);
+      border-radius: var(--r-xl);
+      padding: 36px 32px;
+      border: 1px solid var(--c-border);
+      transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+      position: relative;
+    }
+    .tcard:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .tcard__stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 18px;
+      color: var(--c-accent);
+      font-size: 17px;
+    }
+
+    .tcard__quote {
+      font-size: 14.5px;
+      line-height: 1.78;
+      color: var(--c-ink-soft);
+      font-style: italic;
+      margin-bottom: 26px;
+    }
+
+    .tcard__author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .tcard__avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--f-display);
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .tcard__name {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--c-ink);
+    }
+    .tcard__loc {
+      font-size: 12px;
+      color: var(--c-ink-mid);
+      margin-top: 2px;
+    }
+
+    /* =============================================
+       FORM
+    ============================================= */
+    .inquiry {
+      padding: 110px 0;
+      background: var(--c-bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .inquiry::before {
+      content: '';
+      position: absolute;
+      bottom: -280px;
+      left: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(199,75,31,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .inquiry__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .inquiry__info .eyebrow { color: #f5a880; }
+    .inquiry__info .display { color: var(--c-ink); }
+
+    .inquiry__body {
+      margin-top: 22px;
+      font-size: 15px;
+      color: var(--c-ink-soft);
+      line-height: 1.72;
+      max-width: 400px;
+    }
+
+    .inquiry__contact {
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--c-ink-soft);
+    }
+    .contact-row svg {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      stroke: var(--c-orange);
+      fill: none;
+    }
+
+    /* Form */
+    .form {
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--r-xl);
+      padding: 44px 40px;
+    }
+
+    .form-group { margin-bottom: 22px; }
+
+    .form-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-ink-mid);
+      margin-bottom: 8px;
+    }
+
+    .form-ctrl {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: var(--r-sm);
+      padding: 13px 16px;
+      font-family: var(--f-body);
+      font-size: 15px;
+      color: var(--c-ink);
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+      -webkit-appearance: none;
+    }
+    .form-ctrl::placeholder { color: rgba(255,255,255,0.22); }
+    .form-ctrl:focus {
+      border-color: rgba(138,138,138,0.55);
+      background: rgba(255,255,255,0.07);
+    }
+
+    select.form-ctrl {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='rgba(255,255,255,0.35)' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-size: 16px;
+      padding-right: 40px;
+    }
+    select.form-ctrl option { background: var(--c-bg-alt); }
+
+    textarea.form-ctrl {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--c-orange);
+      color: #fff;
+      padding: 15px 24px;
+      border-radius: var(--r-sm);
+      font-family: var(--f-body);
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 6px;
+      transition: all 0.25s var(--ease);
+    }
+    .btn-submit:hover {
+      background: var(--c-orange-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px var(--c-accent-glow);
+    }
+    .btn-submit:active { transform: scale(0.97); }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    .footer {
+      background: var(--c-dark-2);
+      padding: 72px 0 36px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 56px;
+    }
+
+    .footer__brand .logo-name {
+      font-family: var(--f-body);
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--c-ink);
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .footer__desc {
+      font-size: 14px;
+      color: var(--c-ink-mid);
+      line-height: 1.72;
+      max-width: 260px;
+    }
+
+    .footer__col-head {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--c-ink-mid);
+      margin-bottom: 20px;
+    }
+
+    .footer__links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .footer__links a {
+      font-size: 14px;
+      color: var(--c-ink-soft);
+      transition: color 0.2s ease;
+    }
+    .footer__links a:hover { color: var(--c-ink); }
+    .footer__links span {
+      font-size: 14px;
+      color: var(--c-ink-mid);
+    }
+
+    .footer__bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer__copy {
+      font-size: 13px;
+      color: var(--c-ink-mid);
+    }
+
+    .footer__badge {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--c-ink-mid);
+    }
+    .footer__badge svg { width: 13px; height: 13px; stroke: var(--c-orange); }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 1024px) {
+      .trust-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer__grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+
+    @media (max-width: 768px) {
+      .nav__links, .btn--call { display: none; }
+      .hamburger { display: flex; }
+
+      .services__grid,
+      .testimonials__grid,
+      .projects__grid { grid-template-columns: 1fr; }
+
+      .inquiry__grid { grid-template-columns: 1fr; gap: 44px; }
+      .form { padding: 32px 22px; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+
+      .hero__stats { gap: 28px; margin-top: 60px; padding-top: 32px; }
+
+      .trust-grid { grid-template-columns: 1fr; }
+
+      .footer__grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer__bottom { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .hero__title { font-size: 3.5rem; }
+      .hero__actions { gap: 10px; }
+      .btn { padding: 12px 20px; font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- =============================================
+     HEADER
+============================================= -->
+<header class="header" id="hdr">
+  <div class="header__inner">
+    <a href="#" class="logo" aria-label="Casa Mora Roofing home">
+      <span class="logo__name">Casa Mora</span>
+    </a>
+
+    <nav class="nav" aria-label="Main navigation">
+      <ul class="nav__links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="tel:8055550142" class="btn--call">Call Now</a>
+      <button class="hamburger" id="ham" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mob" aria-label="Mobile navigation">
+  <a href="#services"     onclick="closeNav()">Services</a>
+  <a href="#why"          onclick="closeNav()">Why Us</a>
+  <a href="#projects"     onclick="closeNav()">Projects</a>
+  <a href="#reviews"      onclick="closeNav()">Reviews</a>
+  <a href="#contact"      onclick="closeNav()">Contact</a>
+  <a href="tel:8055550142" class="btn btn--primary" onclick="closeNav()">(805) 555-0142 — Call Now</a>
+</nav>
+
+<!-- =============================================
+     HERO
+============================================= -->
+<section class="hero" id="home">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="hero__content">
+    <div class="hero__pill">Santa Barbara &amp; Los Angeles, CA &nbsp;·&nbsp; Licensed &amp; Insured</div>
+    <h1 class="hero__title">
+      CALIFORNIA'S<br>
+      <em>TRUSTED</em><br>
+      ROOFING CO.
+    </h1>
+    <p class="hero__sub">
+      Built to outlast California's harshest seasons. Full roof replacements — residential and commercial — delivered on time and done right the first time.
+    </p>
+    <div class="hero__actions">
+      <a href="#contact" class="btn btn--primary">
+        Get a Free Estimate
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="tel:8055550142" class="btn btn--ghost">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        (805) 555-0142
+      </a>
+    </div>
+
+    <div class="hero__stats">
+      <div>
+        <div class="hero__stat-val">2,400+</div>
+        <div class="hero__stat-label">Roofs Completed</div>
+      </div>
+      <div>
+        <div class="hero__stat-val">30</div>
+        <div class="hero__stat-label">Years in California</div>
+      </div>
+      <div>
+        <div class="hero__stat-val">4.9★</div>
+        <div class="hero__stat-label">Google Rating</div>
+      </div>
+      <div>
+        <div class="hero__stat-val">25yr</div>
+        <div class="hero__stat-label">Workmanship Warranty</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     SERVICES
+============================================= -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="services__head reveal">
+      <span class="eyebrow">What We Do</span>
+      <h2 class="display display--lg">ROOFING FOR EVERY PROPERTY</h2>
+    </div>
+
+    <div class="services__grid">
+
+      <!-- Residential -->
+      <div class="svc-card reveal d1">
+        <span class="svc-card__bg-num" aria-hidden="true">01</span>
+        <div class="svc-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+            <polyline points="9,22 9,12 15,12 15,22"/>
+          </svg>
+        </div>
+        <h3 class="svc-card__title">RESIDENTIAL ROOFING</h3>
+        <p class="svc-card__desc">Complete roof replacements for single-family homes, townhomes, and condos across Southern California. We work with slate, clay tile, standing seam metal, and architectural shingles — matching every neighborhood's look and California code requirements.</p>
+        <a href="#contact" class="svc-card__cta">
+          Get a Free Quote
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Commercial -->
+      <div class="svc-card reveal d2">
+        <span class="svc-card__bg-num" aria-hidden="true">02</span>
+        <div class="svc-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <path d="M8 21h8M12 17v4"/>
+            <path d="M6 8h4M14 8h4M6 12h4M14 12h4"/>
+          </svg>
+        </div>
+        <h3 class="svc-card__title">COMMERCIAL ROOFING</h3>
+        <p class="svc-card__desc">Large-scale solutions for warehouses, office complexes, retail centers, and multi-unit buildings across Southern California. We minimize disruption to your operations with firm start dates, daily progress updates, and guaranteed completion timelines.</p>
+        <a href="#contact" class="svc-card__cta">
+          Get a Free Quote
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     WHY US
+============================================= -->
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="why__head reveal">
+      <span class="eyebrow">Why Casa Mora</span>
+      <h2 class="display display--lg">BUILT ON TRUST.<br>PROVEN IN CALIFORNIA.</h2>
+    </div>
+
+    <div class="trust-grid">
+      <div class="trust-card reveal d1">
+        <div class="trust-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3 class="trust-card__title">LICENSED &amp; INSURED</h3>
+        <p class="trust-card__desc">CSLB-licensed and fully covered. Every crew member carries comprehensive liability and workers' comp — you're protected from day one.</p>
+      </div>
+
+      <div class="trust-card reveal d2">
+        <div class="trust-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <h3 class="trust-card__title">CALIFORNIA-BASED TEAM</h3>
+        <p class="trust-card__desc">Proudly rooted in Southern California for 30 years. We know the neighborhoods, the permit offices, and what roofs here actually need to survive.</p>
+      </div>
+
+      <div class="trust-card reveal d3">
+        <div class="trust-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12,6 12,12 16,14"/>
+          </svg>
+        </div>
+        <h3 class="trust-card__title">FAST TURNAROUND</h3>
+        <p class="trust-card__desc">Most residential replacements are done in 1–3 days. We never leave a property exposed — every job is scheduled, communicated, and completed on time.</p>
+      </div>
+
+      <div class="trust-card reveal d4">
+        <div class="trust-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20,6 9,17 4,12"/>
+          </svg>
+        </div>
+        <h3 class="trust-card__title">SATISFACTION GUARANTEED</h3>
+        <p class="trust-card__desc">Every installation is backed by a 25-year workmanship warranty. Something isn't right? We make it right — no runaround, no extra charges.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     BEFORE & AFTER
+============================================= -->
+<section class="projects" id="projects">
+  <div class="wrap">
+    <div class="projects__head reveal">
+      <span class="eyebrow">Our Work</span>
+      <h2 class="display display--lg">BEFORE &amp; AFTER</h2>
+    </div>
+    <p class="projects__sub reveal">Drag the handle to compare — real results from California properties.</p>
+
+    <div class="projects__grid">
+
+      <!-- Project 1 -->
+      <div class="ba-wrap reveal d1">
+        <div class="ba-slider" id="ba1">
+          <span class="ba-tag ba-tag--before">Before</span>
+          <span class="ba-tag ba-tag--after">After</span>
+          <img class="ba-img-before" src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800" alt="Before: worn tile roof">
+          <div class="ba-after-clip" id="ba1-clip">
+            <img class="ba-img-after" id="ba1-after" src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800" alt="After: new clay tile roof">
+          </div>
+          <div class="ba-divider" id="ba1-div">
+            <div class="ba-handle-btn" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18l-6-6 6-6M15 6l6 6-6 6"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="ba-info">
+          <h4 class="ba-info__title">TILE RE-ROOF</h4>
+          <p class="ba-info__location">Beverly Hills &nbsp;·&nbsp; Clay Tile Replacement</p>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="ba-wrap reveal d2">
+        <div class="ba-slider" id="ba2">
+          <span class="ba-tag ba-tag--before">Before</span>
+          <span class="ba-tag ba-tag--after">After</span>
+          <img class="ba-img-before" src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800" alt="Before: worn flat roof">
+          <div class="ba-after-clip" id="ba2-clip">
+            <img class="ba-img-after" id="ba2-after" src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800" alt="After: new flat roof">
+          </div>
+          <div class="ba-divider" id="ba2-div">
+            <div class="ba-handle-btn" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18l-6-6 6-6M15 6l6 6-6 6"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="ba-info">
+          <h4 class="ba-info__title">FLAT ROOF RESTORATION</h4>
+          <p class="ba-info__location">Silver Lake &nbsp;·&nbsp; TPO Membrane Installation</p>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="ba-wrap reveal d3">
+        <div class="ba-slider" id="ba3">
+          <span class="ba-tag ba-tag--before">Before</span>
+          <span class="ba-tag ba-tag--after">After</span>
+          <img class="ba-img-before" src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800" alt="Before: worn shingle roof">
+          <div class="ba-after-clip" id="ba3-clip">
+            <img class="ba-img-after" id="ba3-after" src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800" alt="After: new shingle roof">
+          </div>
+          <div class="ba-divider" id="ba3-div">
+            <div class="ba-handle-btn" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18l-6-6 6-6M15 6l6 6-6 6"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="ba-info">
+          <h4 class="ba-info__title">SHINGLE INSTALL</h4>
+          <p class="ba-info__location">Pasadena &nbsp;·&nbsp; Full Tear-Off &amp; Rebuild</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     TESTIMONIALS
+============================================= -->
+<section class="testimonials" id="reviews">
+  <div class="wrap">
+    <div class="testimonials__head reveal">
+      <span class="eyebrow">Client Words</span>
+      <h2 class="display display--lg">WHAT OUR CLIENTS SAY</h2>
+    </div>
+
+    <div class="testimonials__grid">
+
+      <div class="tcard reveal d1">
+        <div class="tcard__stars" aria-label="5 stars">★★★★★</div>
+        <p class="tcard__quote">"Casa Mora replaced our entire roof in under two days. The crew showed up when they said they would, cleaned up completely after, and the new clay tile work looks incredible. Best contractor experience we've had in 20 years of owning this home."</p>
+        <div class="tcard__author">
+          <div class="tcard__avatar" style="background: #C74B1F;" aria-hidden="true">CH</div>
+          <div>
+            <div class="tcard__name">Catherine H.</div>
+            <div class="tcard__loc">Montecito, CA</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard reveal d2">
+        <div class="tcard__stars" aria-label="5 stars">★★★★★</div>
+        <p class="tcard__quote">"We got three quotes for our commercial building and Casa Mora was the only contractor that gave us a firm schedule and actually kept it. The TPO membrane install was flawless — no leaks, no callbacks six months later. Worth every cent."</p>
+        <div class="tcard__author">
+          <div class="tcard__avatar" style="background: #1f1f1f; border: 1px solid #2a2a2a;" aria-hidden="true">RW</div>
+          <div>
+            <div class="tcard__name">Robert W.</div>
+            <div class="tcard__loc">Los Angeles, CA</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard reveal d3">
+        <div class="tcard__stars" aria-label="5 stars">★★★★★</div>
+        <p class="tcard__quote">"After the winter storms, my roof had serious damage. Casa Mora came out within 24 hours for the inspection, dealt directly with my insurance adjuster, and had everything fully rebuilt within a week. I can't recommend them highly enough."</p>
+        <div class="tcard__author">
+          <div class="tcard__avatar" style="background: #2a2a2a;" aria-hidden="true">MT</div>
+          <div>
+            <div class="tcard__name">Margaret T.</div>
+            <div class="tcard__loc">Ojai, CA</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     INQUIRY FORM
+============================================= -->
+<section class="inquiry" id="contact">
+  <div class="wrap">
+    <div class="inquiry__grid">
+
+      <div class="inquiry__info reveal">
+        <span class="eyebrow">Free Estimates</span>
+        <h2 class="display display--lg">LET'S TALK ABOUT YOUR ROOF</h2>
+        <p class="inquiry__body">Fill out the form and a Casa Mora project coordinator will reach out within 24 hours to schedule your free roof inspection. No pressure. No obligation. Just straight talk about what your property needs.</p>
+        <div class="inquiry__contact">
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            (805) 555-0142
+          </div>
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            hello@casamora.com
+          </div>
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Santa Barbara &amp; Los Angeles Counties
+          </div>
+        </div>
+      </div>
+
+      <form class="form reveal d2" id="inquiry-form" onsubmit="handleSubmit(event)" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="f-name">Full Name</label>
+            <input class="form-ctrl" type="text" id="f-name" placeholder="Jane Smith" autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="f-phone">Phone</label>
+            <input class="form-ctrl" type="tel" id="f-phone" placeholder="(805) 000-0000" autocomplete="tel">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-email">Email Address</label>
+          <input class="form-ctrl" type="email" id="f-email" placeholder="jane@example.com" autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-service">Service Type</label>
+          <select class="form-ctrl" id="f-service">
+            <option value="" disabled selected>Select a service…</option>
+            <option value="residential">Residential Roofing</option>
+            <option value="commercial">Commercial Roofing</option>
+            <option value="repair">Roof Repair</option>
+            <option value="inspection">Roof Inspection</option>
+            <option value="insurance">Insurance Claim</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-msg">Tell Us About Your Project</label>
+          <textarea class="form-ctrl" id="f-msg" placeholder="Describe your property, current roof condition, any damage or concerns…"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">
+          Request My Free Estimate →
+        </button>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     FOOTER
+============================================= -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+
+      <div class="footer__brand">
+        <span class="logo-name">Casa Mora</span>
+        <p class="footer__desc">Southern California's trusted roofing contractor for over 30 years. Full roof replacements, residential and commercial, done right — backed by a 25-year warranty.</p>
+      </div>
+
+      <div>
+        <p class="footer__col-head">Services</p>
+        <ul class="footer__links">
+          <li><a href="#services">Residential Roofing</a></li>
+          <li><a href="#services">Commercial Roofing</a></li>
+          <li><a href="#contact">Free Estimates</a></li>
+          <li><a href="#projects">Our Work</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer__col-head">Company</p>
+        <ul class="footer__links">
+          <li><a href="#why">About Us</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer__col-head">Contact</p>
+        <ul class="footer__links">
+          <li><a href="tel:8055550142">(805) 555-0142</a></li>
+          <li><a href="mailto:hello@casamora.com">hello@casamora.com</a></li>
+          <li><span>Santa Barbara, CA 93101</span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2025 Casa Mora Roofing &nbsp;·&nbsp; Santa Barbara, CA &nbsp;·&nbsp; CSLB Lic. #RC-2941</p>
+      <div class="footer__badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Licensed &amp; Insured
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* =============================================
+   HEADER SCROLL EFFECT
+============================================= */
+const hdr = document.getElementById('hdr');
+window.addEventListener('scroll', () => {
+  hdr.classList.toggle('solid', window.scrollY > 60);
+}, { passive: true });
+
+/* =============================================
+   MOBILE NAV
+============================================= */
+const ham = document.getElementById('ham');
+const mob = document.getElementById('mob');
+
+ham.addEventListener('click', () => {
+  const isOpen = mob.classList.toggle('open');
+  ham.classList.toggle('open', isOpen);
+  ham.setAttribute('aria-expanded', isOpen);
+});
+
+function closeNav() {
+  mob.classList.remove('open');
+  ham.classList.remove('open');
+  ham.setAttribute('aria-expanded', 'false');
+}
+
+// Close on outside click
+document.addEventListener('click', (e) => {
+  if (!ham.contains(e.target) && !mob.contains(e.target)) closeNav();
+});
+
+/* =============================================
+   SCROLL REVEAL
+============================================= */
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(({ target, isIntersecting }) => {
+    if (isIntersecting) {
+      target.classList.add('in');
+      revealObs.unobserve(target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+/* =============================================
+   BEFORE / AFTER SLIDERS
+============================================= */
+function initSlider(sliderId) {
+  const slider   = document.getElementById(sliderId);
+  const clip     = document.getElementById(sliderId + '-clip');
+  const afterImg = document.getElementById(sliderId + '-after');
+  const divider  = document.getElementById(sliderId + '-div');
+  let dragging   = false;
+
+  function getPercent(clientX) {
+    const rect = slider.getBoundingClientRect();
+    return Math.min(Math.max(((clientX - rect.left) / rect.width) * 100, 3), 97);
+  }
+
+  function apply(pct) {
+    clip.style.width    = pct + '%';
+    divider.style.left  = pct + '%';
+    // ensure after image always fills the full slider width
+    afterImg.style.width = slider.offsetWidth + 'px';
+  }
+
+  // Start at 50%
+  apply(50);
+
+  // Mouse
+  slider.addEventListener('mousedown', (e) => {
+    dragging = true;
+    apply(getPercent(e.clientX));
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove', (e) => {
+    if (dragging) apply(getPercent(e.clientX));
+  });
+  document.addEventListener('mouseup', () => { dragging = false; });
+
+  // Touch
+  slider.addEventListener('touchstart', (e) => {
+    dragging = true;
+    apply(getPercent(e.touches[0].clientX));
+  }, { passive: true });
+  document.addEventListener('touchmove', (e) => {
+    if (dragging) apply(getPercent(e.touches[0].clientX));
+  }, { passive: true });
+  document.addEventListener('touchend', () => { dragging = false; });
+
+  // Re-sync after-image width on resize
+  window.addEventListener('resize', () => {
+    const cur = parseFloat(clip.style.width) || 50;
+    apply(cur);
+  }, { passive: true });
+}
+
+initSlider('ba1');
+initSlider('ba2');
+initSlider('ba3');
+
+/* =============================================
+   FORM SUBMIT (display only)
+============================================= */
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.btn-submit');
+  const origHTML = btn.innerHTML;
+  btn.innerHTML = 'Request sent! We\'ll call you within 24 hours.';
+  btn.style.background = '#2D6A4F';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.innerHTML = origHTML;
+    btn.style.background = '';
+    btn.disabled = false;
+    e.target.reset();
+  }, 4000);
+}
+</script>
+
+</body>
+</html>
