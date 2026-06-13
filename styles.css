@@ -171,7 +171,7 @@ a   { text-decoration: none; color: inherit; }
   position: fixed;
   inset: 0 0 auto;
   z-index: 200;
-  background: #000;
+  background: #161616; /* sampled from Casa Mora logo corner pixel */
   box-shadow: 0 1px 0 rgba(255,255,255,0.06);
 }
 
@@ -1179,4 +1179,280 @@ textarea.form-ctrl {
 @media (max-width: 480px) {
   .hero__actions { gap: 10px; }
   .btn { padding: 12px 20px; font-size: 14px; }
+}
+
+/* =============================================
+   SERVICES NAV DROPDOWN (desktop hover / mobile tap)
+   Parent containers must not clip this — header/nav
+   have no overflow:hidden, dropdown sits above via z-index.
+============================================= */
+.nav__links .nav__item { position: relative; display: flex; align-items: center; }
+
+.nav__dd-toggle { display: inline-flex; align-items: center; gap: 6px; }
+.nav__dd-toggle svg { width: 12px; height: 12px; transition: transform 0.25s ease; }
+
+.nav__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  min-width: 252px;
+  background: #161616;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--r-md);
+  padding: 8px;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  box-shadow: 0 22px 54px rgba(0,0,0,0.6);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 320;
+}
+/* invisible bridge so the cursor can travel from toggle to menu without closing */
+.nav__dropdown::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: -12px;
+  height: 12px;
+}
+.nav__item:hover .nav__dropdown,
+.nav__item--open .nav__dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.nav__item:hover .nav__dd-toggle svg,
+.nav__item--open .nav__dd-toggle svg { transform: rotate(180deg); }
+
+.nav__dropdown a {
+  display: block;
+  padding: 10px 14px;
+  border-radius: var(--r-sm);
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.72);
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.nav__dropdown a:hover { background: rgba(255,255,255,0.06); color: var(--c-orange); }
+
+/* Mobile services submenu */
+.mobile-nav__group {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.mobile-nav__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255,255,255,0.78);
+  font-family: var(--f-body);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 14px 0;
+}
+.mobile-nav__toggle svg { width: 14px; height: 14px; transition: transform 0.25s ease; }
+.mobile-nav__group.open .mobile-nav__toggle svg { transform: rotate(180deg); }
+.mobile-nav__sub { display: none; flex-direction: column; padding: 0 0 8px 14px; }
+.mobile-nav__group.open .mobile-nav__sub { display: flex; }
+.mobile-nav__sub a {
+  font-size: 15px;
+  padding: 11px 0;
+  border-bottom: none;
+  color: rgba(255,255,255,0.6);
+}
+.mobile-nav__sub a:hover { color: var(--c-orange); }
+
+/* =============================================
+   GENERIC SECTION HELPERS (home + inner pages)
+============================================= */
+.section { padding: 100px 0; background: var(--c-bg); }
+.section--alt { background: var(--c-bg-alt); }
+.section__head { max-width: 620px; margin-bottom: 50px; }
+.section__head .display { color: var(--c-ink); }
+.section__cta { margin-top: 46px; }
+
+.btn--outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--c-ink);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  padding: 14px 26px;
+  border-radius: var(--r-sm);
+  font-family: var(--f-body);
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.25s var(--ease);
+}
+.btn--outline:hover { border-color: var(--c-orange); color: var(--c-orange); transform: translateY(-2px); }
+
+.home-about__text { max-width: 760px; }
+.home-about__text p { font-size: 16px; color: var(--c-ink-soft); line-height: 1.85; }
+
+/* =============================================
+   SERVICE CARD GRID (home preview + services.html)
+============================================= */
+.svc-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.svc-link-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--c-bg-alt);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-xl);
+  padding: 34px 30px;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+  color: var(--c-ink);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+.svc-link-card::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: var(--c-orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease);
+}
+.svc-link-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+.svc-link-card:hover::after { transform: scaleX(1); }
+.svc-link-card .svc-icon { margin-bottom: 20px; }
+.svc-link-card h3 {
+  font-family: var(--f-display);
+  font-size: 1.7rem;
+  letter-spacing: 0.04em;
+  color: var(--c-ink);
+  margin-bottom: 10px;
+}
+.svc-link-card p {
+  font-size: 14px;
+  color: var(--c-ink-soft);
+  line-height: 1.7;
+  margin-bottom: 22px;
+  flex: 1;
+}
+
+@media (max-width: 1024px) { .svc-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)  { .svc-cards { grid-template-columns: 1fr; } }
+
+/* =============================================
+   OUR WORK — 3-column single-image grid
+   (3 desktop / 2 tablet / 1 mobile)
+============================================= */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.work-item {
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  aspect-ratio: 4 / 3;
+  background: var(--c-bg-3);
+}
+.work-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s var(--ease);
+}
+.work-item:hover img { transform: scale(1.05); }
+
+@media (max-width: 1024px) { .work-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)  { .work-grid { grid-template-columns: 1fr; } }
+
+/* =============================================
+   INDIVIDUAL SERVICE PAGES
+============================================= */
+.svc-hero {
+  position: relative;
+  min-height: 64vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--c-dark-2);
+}
+.svc-hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.svc-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(8,8,8,0.96) 0%, rgba(8,8,8,0.55) 45%, rgba(8,8,8,0.4) 100%);
+}
+.svc-hero__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding-bottom: 64px;
+  padding-top: calc(var(--header-h) + 40px);
+}
+.svc-hero h1 {
+  font-family: var(--f-display);
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  letter-spacing: 0.03em;
+  color: #fff;
+  line-height: 0.95;
+}
+.svc-hero__sub {
+  color: rgba(255,255,255,0.72);
+  max-width: 560px;
+  margin-top: 16px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.svc-section { padding: 90px 0; background: var(--c-bg); }
+.svc-layout {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.svc-desc p { font-size: 16px; color: var(--c-ink-soft); line-height: 1.85; margin-bottom: 20px; }
+.svc-desc p:last-child { margin-bottom: 0; }
+
+.benefits {
+  background: var(--c-bg-alt);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-xl);
+  padding: 36px 32px;
+}
+.benefits h3 {
+  font-family: var(--f-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+  color: var(--c-ink);
+  margin-bottom: 22px;
+}
+
+@media (max-width: 900px) {
+  .svc-layout { grid-template-columns: 1fr; gap: 40px; }
+  .svc-hero { min-height: 54vh; }
 }
