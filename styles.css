@@ -141,13 +141,11 @@ a   { text-decoration: none; color: inherit; }
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  box-shadow: 0 6px 22px rgba(199,75,31,0.35);
   transition: all 0.25s ease;
 }
 .btn--phone:hover {
   background: var(--c-orange-hover);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 36px rgba(199,75,31,0.5);
+  transform: translateY(-2px);
 }
 
 /* =============================================
@@ -898,7 +896,21 @@ a   { text-decoration: none; color: inherit; }
   color: var(--c-ink);
   margin-bottom: 28px;
 }
-.cta-band .btn--phone { margin: 0 auto; }
+/* CTA button group — centered pair, ~1rem gap, stacks full-width on mobile.
+   (A single .btn--phone in a .cta-band still centers via text-align:center.) */
+.cta-band__actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.cta-band__actions .btn--phone { margin: 0; }
+@media (max-width: 560px) {
+  .cta-band__actions { flex-direction: column; }
+  .cta-band__actions .btn--phone,
+  .cta-band__actions .btn--outline { width: 100%; justify-content: center; }
+}
 
 /* =============================================
    FORM
