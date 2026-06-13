@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Work | Casa Mora Roofing — Before & After</title>
+  <meta name="description" content="Before and after roofing transformations from Casa Mora Roofing across Southern and Northern California.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- =============================================
+     HEADER
+============================================= -->
+<header class="header" id="hdr">
+  <div class="header__inner">
+    <a href="index.html" class="logo" aria-label="Casa Mora Roofing home">
+      <img src="images/casa-mora-logo.jpg" alt="Casa Mora Roofing" class="logo__img">
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <ul class="nav__links">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="areas-we-serve.html">Areas We Serve</a></li>
+        <li><a href="our-work.html" class="active" aria-current="page">Our Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="tel:3233139275" class="btn--call">Call Now</a>
+      <button class="hamburger" id="ham" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mob" aria-label="Mobile navigation">
+  <a href="services.html"        onclick="closeNav()">Services</a>
+  <a href="about.html"           onclick="closeNav()">About</a>
+  <a href="areas-we-serve.html"  onclick="closeNav()">Areas We Serve</a>
+  <a href="our-work.html" class="active"  onclick="closeNav()">Our Work</a>
+  <a href="contact.html"         onclick="closeNav()">Contact</a>
+  <a href="tel:3233139275" class="btn btn--primary" onclick="closeNav()">(323) 313-9275 — Call Now</a>
+</nav>
+
+<!-- =============================================
+     PAGE HEAD
+============================================= -->
+<section class="page-head">
+  <div class="wrap">
+    <div class="page-head__inner">
+      <span class="eyebrow">Our Work</span>
+      <h1 class="display display--lg">BEFORE &amp; AFTER</h1>
+      <p class="page-head__lead">Drag the handle to compare. Real before-and-after roofing transformations from California properties — photos coming soon.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     BEFORE & AFTER (structure kept, images blank)
+     To add a real project: replace each .ba-placeholder block with an
+     <img> tag. The base/full element keeps the CLEAN "after" look on the
+     right; the clipped overlay (id ending in -after) holds the WORN
+     "before" look on the left. Example:
+       <img class="ba-img-before" src="images/project1-after.jpg" alt="After">
+       <img class="ba-img-after"  id="ba1-after" src="images/project1-before.jpg" alt="Before">
+============================================= -->
+<section class="projects" id="projects">
+  <div class="wrap">
+    <div class="projects__grid">
+
+      <!-- Project 1 -->
+      <div class="ba-wrap reveal d1">
+        <div class="ba-slider" id="ba1">
+          <span class="ba-tag ba-tag--before">Before</span>
+          <span class="ba-tag ba-tag--after">After</span>
+          <!-- BASE (right side / clean) — replace with <img class="ba-img-before"> -->
+          <div class="ba-placeholder ba-placeholder--before">After photo</div>
+          <div class="ba-after-clip" id="ba1-clip">
+            <!-- OVERLAY (left side / worn) — replace with <img class="ba-img-after" id="ba1-after"> -->
+            <div class="ba-placeholder ba-placeholder--after" id="ba1-after">Before photo</div>
+          </div>
+          <div class="ba-divider" id="ba1-div">
+            <div class="ba-handle-btn" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18l-6-6 6-6M15 6l6 6-6 6"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="ba-info">
+          <h2 class="ba-info__title">PROJECT TITLE</h2>
+          <p class="ba-info__location">City, CA &nbsp;·&nbsp; Roof Type</p>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="ba-wrap reveal d2">
+        <div class="ba-slider" id="ba2">
+          <span class="ba-tag ba-tag--before">Before</span>
+          <span class="ba-tag ba-tag--after">After</span>
+          <div class="ba-placeholder ba-placeholder--before">After photo</div>
+          <div class="ba-after-clip" id="ba2-clip">
+            <div class="ba-placeholder ba-placeholder--after" id="ba2-after">Before photo</div>
+          </div>
+          <div class="ba-divider" id="ba2-div">
+            <div class="ba-handle-btn" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18l-6-6 6-6M15 6l6 6-6 6"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="ba-info">
+          <h2 class="ba-info__title">PROJECT TITLE</h2>
+          <p class="ba-info__location">City, CA &nbsp;·&nbsp; Roof Type</p>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="ba-wrap reveal d3">
+        <div class="ba-slider" id="ba3">
+          <span class="ba-tag ba-tag--before">Before</span>
+          <span class="ba-tag ba-tag--after">After</span>
+          <div class="ba-placeholder ba-placeholder--before">After photo</div>
+          <div class="ba-after-clip" id="ba3-clip">
+            <div class="ba-placeholder ba-placeholder--after" id="ba3-after">Before photo</div>
+          </div>
+          <div class="ba-divider" id="ba3-div">
+            <div class="ba-handle-btn" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18l-6-6 6-6M15 6l6 6-6 6"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="ba-info">
+          <h2 class="ba-info__title">PROJECT TITLE</h2>
+          <p class="ba-info__location">City, CA &nbsp;·&nbsp; Roof Type</p>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="ba-wrap reveal d4">
+        <div class="ba-slider" id="ba4">
+          <span class="ba-tag ba-tag--before">Before</span>
+          <span class="ba-tag ba-tag--after">After</span>
+          <div class="ba-placeholder ba-placeholder--before">After photo</div>
+          <div class="ba-after-clip" id="ba4-clip">
+            <div class="ba-placeholder ba-placeholder--after" id="ba4-after">Before photo</div>
+          </div>
+          <div class="ba-divider" id="ba4-div">
+            <div class="ba-handle-btn" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18l-6-6 6-6M15 6l6 6-6 6"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="ba-info">
+          <h2 class="ba-info__title">PROJECT TITLE</h2>
+          <p class="ba-info__location">City, CA &nbsp;·&nbsp; Roof Type</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     CTA BAND
+============================================= -->
+<section class="cta-band">
+  <div class="wrap">
+    <h2>WANT RESULTS LIKE THESE?</h2>
+    <a href="tel:3233139275" class="btn--phone">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      Call Now (323) 313-9275
+    </a>
+  </div>
+</section>
+
+<!-- =============================================
+     FOOTER
+============================================= -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="images/casa-mora-logo.jpg" alt="Casa Mora Roofing" class="footer__logo">
+        <p class="footer__desc">Family-owned and operated for over 15 years, serving Southern &amp; Northern California. Full roof replacements and repairs, done right — backed by a 50-year warranty.</p>
+      </div>
+      <div>
+        <p class="footer__col-head">Navigate</p>
+        <ul class="footer__links">
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="areas-we-serve.html">Areas We Serve</a></li>
+          <li><a href="our-work.html">Our Work</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__col-head">Contact</p>
+        <ul class="footer__links">
+          <li><a href="tel:3233139275">(323) 313-9275</a></li>
+          <li><a href="mailto:info@casamoraroofing.com">info@casamoraroofing.com</a></li>
+          <li><span>CSLB Lic # 1155588</span></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__col-head">Service Areas</p>
+        <ul class="footer__links">
+          <li><span>Southern California</span></li>
+          <li><span>Northern California</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2025 Casa Mora Roofing &nbsp;·&nbsp; Southern &amp; Northern California &nbsp;·&nbsp; CSLB Lic # 1155588</p>
+      <div class="footer__badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Licensed &amp; Insured
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>
